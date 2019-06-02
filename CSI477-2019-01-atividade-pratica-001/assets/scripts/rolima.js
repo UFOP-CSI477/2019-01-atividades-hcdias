@@ -75,8 +75,8 @@ $("#analisar").click(function (){
     result.sort( (a,b) => parseInt(a.tempo) - parseInt(b.tempo) );
     
     //separa o melhor tempo
-    winner = result[0];
-    posicao = 1;
+    let winner = result[0];
+    let posicao = 1;
     //compara os tempos e distribui as posicoes
     result.map((item,index) => {
         if(item.tempo == winner.tempo){
