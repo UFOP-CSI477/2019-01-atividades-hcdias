@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href='../assets/bootstrap/css/bootstrap.min.css'>
+        <link rel="stylesheet" href='../assets/css/rolima.min.css'>
+        <title>CSI477-2019-01-atividade-pratica-001</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-center">
+                <a class="navbar-brand" href="#">Corrida de rolimã</a>
+            </nav>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form id="formCompetidor">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="largada">Largada</label>
+                                <input type="number" class="form-control" id="largada" aria-describedby="largada">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="competidor">Competidor</label>
+                                <input type="text" class="form-control" id="competidor" aria-describedby="competidor">
+                            </div>
+                             <div class="col-md-2">
+                                <label for="largada">Tempo</label>
+                                <input type="number" class="form-control" id="tempo" aria-describedby="tempo">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row" id="btnGroupOptions">
+                        <div class="col-md-10">
+                            <div class="d-flex justify-content-end">
+                                <div class="btn-group" role="group" aria-label="opcao">
+                                    <button type="button" class="btn btn-primary" id="analisar">Analisar</button>
+                                    <button type="button" class="btn btn-warning" id="addCompetidor">Adicionar competidor</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" id="tableResult">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Posição</th>
+                          <th scope="col">Largada</th>
+                          <th scope="col">Competidor(a)</th>
+                          <th scope="col">Tempo(s)</th>
+                          <th scope="col">Resultado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-white">CSI477 - Hugo Carvalho</span>
+            </div>
+        </footer>
+    </body>
+    <script src="../assets/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/scripts/rolima.min.js"></script>
+</html>
