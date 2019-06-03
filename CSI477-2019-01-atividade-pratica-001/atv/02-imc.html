@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href='../assets/bootstrap/css/bootstrap.min.css'>
+        <link rel="stylesheet" href='../assets/css/rolima.min.css'>
+        <title>CSI477-2019-01-atividade-pratica-001</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-info d-flex justify-content-center">
+                <a class="navbar-brand" href="#">Cálculo do IMC</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                      <a class="nav-link" href="../index.html">Voltar</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-8">
+                    <form id="formImc">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="peso">Peso</label>
+                                <input type="number" class="form-control" id="peso" aria-describedby="peso" placeholder="Ex:83">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="altura">Altura</label>
+                                <input type="number" class="form-control" id="altura" aria-describedby="altura" placeholder="Ex:1.85">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary" id="analisar">Analisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+                    <table class="table" id="tableResult">
+                      <thead class="thead-dark">
+                        <tr>
+                            <th id="imc" style="text-align:center;background-color:#327743;border-color:#327743;display: none" colspan="2">
+                                
+                            </th>
+                        </tr>
+                        <tr>
+                          <th scope="col">IMC</th>
+                          <th scope="col">Classificação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        
+    </body>
+    <script src="../assets/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/scripts/imc.js"></script>
+</html>
