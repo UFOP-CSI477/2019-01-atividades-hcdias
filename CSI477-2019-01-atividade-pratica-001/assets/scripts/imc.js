@@ -7,14 +7,14 @@
  */
 var Imc = (function($){
     //tabela imc
-	var imcTable = {
-			subnutricao	: {'de':0,	 'ate':18.5},
-			saudavel	: {'de':18.5,'ate':24.9},
-			sobrepeso	: {'de':25,	 'ate':29.9},
-			obesidade1	: {'de':30,	 'ate':34.9},
-			obesidade2	: {'de':35,  'ate':39.9},
-			obesidade3	: {'de':40,  'ate':Infinity}
-		};
+    var imcTable = {
+        subnutricao : {'de':0,   'ate':18.5},
+        saudavel    : {'de':18.5,'ate':24.9},
+        sobrepeso   : {'de':25,  'ate':29.9},
+        obesidade1  : {'de':30,  'ate':34.9},
+        obesidade2  : {'de':35,  'ate':39.9},
+        obesidade3  : {'de':40,  'ate':Infinity}
+    };
     
     /**
      * inicializa o listener no preenchimento dos inputs e 
@@ -22,7 +22,7 @@ var Imc = (function($){
      * 
      * @return void
      */
-	function init (){
+    function init (){
         let peso = altura = faixa = imc = '';
         $('#analisar').click( () => {
             peso    = $('#peso').val();
@@ -47,7 +47,7 @@ var Imc = (function($){
             faixa = classificacao(imc);
             mountTable(faixa,imc);
         });
-	}
+    }
 
     /**
      * monta a tabela de exibicao do resultado
@@ -79,16 +79,16 @@ var Imc = (function($){
      * @param  float imc indice imc calculado
      * @return string  indice encontrado
      */
-	function classificacao (imc){
+    function classificacao (imc){
         let index = ''
-		Object.keys(imcTable).forEach(key => {
+        Object.keys(imcTable).forEach(key => {
             if( imc >= imcTable[key].de && imc <= imcTable[key].ate ){
                 index = key;
             }
-		});
+        });
 
         return index;
-	}
+    }
 
     /**
      * calcula o imc de acordo com o peso e a altura
@@ -96,13 +96,13 @@ var Imc = (function($){
      * @param  string altura altura informada
      * @return number        
      */
-	function calculo(peso,altura){
-		return peso/(altura ** 2);
-	}
+    function calculo(peso,altura){
+        return peso/(altura ** 2);
+    }
 
-	return{
-		init:init
-	}
+    return{
+        init:init
+    }
 })($);
 
 Imc.init();
