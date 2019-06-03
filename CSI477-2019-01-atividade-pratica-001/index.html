@@ -22,6 +22,7 @@
                             <h5 class="card-title">Corrida de rolimã</h5>
                             <p class="card-text">Aplicação para apurar resultados em provas de carrinho de rolimã.</p>
                             <a href="atv/01-corrida.html" class="btn btn-dark">Acessar</a>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalRolima">?</button>
                         </div>
                     </div>
                 </div>
@@ -33,6 +34,7 @@
                             <h5 class="card-title">Índice de Massa Corporal</h5>
                             <p class="card-text">Aplicação para identificar se o peso de uma pessoa está equilibrado em relação à sua altura.</p>
                             <a href="atv/02-imc.html" class="btn btn-dark">Acessar</a>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImc">?</button>
                         </div>
                     </div>
                 </div>
@@ -44,10 +46,85 @@
                             <h5 class="card-title">Escala Richter</h5>
                             <p class="card-text">Aplicação para o cálculo da Magnitude Richter a partir de entradas do usuário.</p>
                             <a href="atv/03-escala.html" class="btn btn-dark">Acessar</a>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalEscala">?</button>
                         </div>
                     </div>
                 </div>            
 
+            </div>
+            <!-- Modal escala-->
+            <div class="modal fade" id="modalEscala" tabindex="-1" role="dialog" aria-labelledby="escalaLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="escalaLabel">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>A escala mais conhecida para determinar qual a intensidade de um terremoto é a
+                        Escala Richter. Essa escala foi desenvolvida por Charles F. Richter em 1935 no Instituto de Tecnologia da Califórnia a partir do estudo de cerca de 200 terremotos ao ano.
+                    </p>
+                    <p><b>Descrição da atividade</b></p>
+                    <p>Criar uma página para receber os parâmetros necessários para o cálculo da Magnitude
+                    Ritcher conforme a Equação <b>M = log<small>10</small> A + 3*log<small>10</small> (8.∆t) -2,92 </b> e apresentar os
+                    efeitos de acordo com o valor encontrado.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal imc-->
+            <div class="modal fade" id="modalImc" tabindex="-1" role="dialog" aria-labelledby="imcLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="imcLabel">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>IMC significa Índice de Massa Corporal e trata-se de uma medida do peso de cada
+                        pessoa, sendo uma relação entre a massa da pessoa e a sua altura.
+                    </p>
+                    <p><b>Descrição da atividade</b></p>
+                    <p> Crie uma página que calcule o Índice de Massa Corporal (IMC) para identificar se o
+                        peso de uma pessoa está equilibrado em relação à sua altura. O cálculo é realizado por meio da Equação: <b>IMC = peso/(altura)^2</b></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <!-- Modal rolima-->
+            <div class="modal fade" id="modalRolima" tabindex="-1" role="dialog" aria-labelledby="rolimaLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="rolimaLabel">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>&#128540</p>
+                    <p><b>Descrição da atividade</b></p>
+                    <p>O objetivo desta aplicação é o desenvolvimento de uma interface para apurar resultados
+                        em provas de carrinhos de rolimã. Os nomes dos(as) competidores(as) são inseridos juntamente
+                        aos seus respectivos tempos(em segundos).
+                        Os dados devem ser digitados conforme a posição de largada, a pessoa que compete e o tempo de prova. 
+                        Ao final, a interface deve apresentar os tempos ordenados de maneira ascendente, indicando a(s) pessoa(s) vencedora(s).</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
             </div>
         </main>
         <footer class="footer bg-info">
