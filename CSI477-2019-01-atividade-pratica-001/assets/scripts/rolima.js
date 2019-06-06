@@ -102,4 +102,7 @@ $("#analisar").click(function (){
     });
     //exibe os resultados
     $("#tableResult > tbody").html(html);
+    $("body,html").animate({
+        scrollTop:$("#tableResult").offset().top - $("#formCompetidor").offset().top + $("#formCompetidor").scrollTop()
+    },1500);
 });

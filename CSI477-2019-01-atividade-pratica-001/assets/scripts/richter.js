@@ -85,6 +85,9 @@ var Richter = (function($){
         });
         $("#tableResult > thead > tr > #magnitude").css('display','table-cell').text(superhead);
         $("#tableResult > tbody").html(html);
+        $("body,html").animate({
+            scrollTop:$("#tableResult").offset().top - $("#formEscala").offset().top + $("#formEscala").scrollTop()
+        },1500);        
     }
 
     /**

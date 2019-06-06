@@ -72,6 +72,9 @@ var Imc = (function($){
         });
         $("#tableResult > thead > tr > #imc").css('display','table-cell').text(superhead);
         $("#tableResult > tbody").html(html);
+        $("body,html").animate({
+            scrollTop:$("#tableResult").offset().top - $("#formImc").offset().top + $("#formImc").scrollTop()
+        },1500);
     }
 
     /**
