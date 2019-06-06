@@ -3,7 +3,9 @@ main{
     position: relative;
     min-height: 71vh;
 }
-
+.bg-ufop{
+    background-color:#962038;
+}
 .row{
     margin-bottom: 3em;
 }
