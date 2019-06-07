@@ -9,20 +9,20 @@ var Richter = (function($){
 
     //tabela magnitude
     var magnitudeTable = {
-        m1 : {'de':0,   'ate':3.4, 		'descricao': 'Menor que 3,5', 	'efeitos': 'Geralmente não sentido, mas gravado'},
-        m2 : {'de':3.5, 'ate':5.4, 		'descricao': 'Entre 3,5 e 5,4', 'efeitos': 'Ás vezes sentido, mas raramente causa danos'},
-        m3 : {'de':5.5, 'ate':6, 		'descricao': 'Entre 5,5 e 6,0', 'efeitos': 'No máximo causa pequenos danos a prédios bem construídos, mas pode danificar seriamente casas mal construídas em regiões próximas'},
-        m4 : {'de':6.1, 'ate':6.9, 		'descricao': 'Entre 6,1 e 6,9', 'efeitos': 'Pode ser destrutivo em áreas em torno de até 100 Km do epicentro'},
-        m5 : {'de':7,   'ate':7.9, 		'descricao': 'Entre 7,0 e 7,9', 'efeitos': 'Grande terremoto, pode causar sérios danos numa grande faixa de área'},
-        m6 : {'de':8,   'ate':Infinity, 'descricao': '8,0 ou mais', 	'efeitos': 'Enorme terremoto, pode causar grandes danos em muitas áreas mesmo que estejam a centenas de quilômetros'}
+        m1 : {'de':0,   'ate':3.4,      'descricao': 'Menor que 3,5',   'efeitos': 'Geralmente não sentido, mas gravado'},
+        m2 : {'de':3.5, 'ate':5.4,      'descricao': 'Entre 3,5 e 5,4', 'efeitos': 'Ás vezes sentido, mas raramente causa danos'},
+        m3 : {'de':5.5, 'ate':6,        'descricao': 'Entre 5,5 e 6,0', 'efeitos': 'No máximo causa pequenos danos a prédios bem construídos, mas pode danificar seriamente casas mal construídas em regiões próximas'},
+        m4 : {'de':6.1, 'ate':6.9,      'descricao': 'Entre 6,1 e 6,9', 'efeitos': 'Pode ser destrutivo em áreas em torno de até 100 Km do epicentro'},
+        m5 : {'de':7,   'ate':7.9,      'descricao': 'Entre 7,0 e 7,9', 'efeitos': 'Grande terremoto, pode causar sérios danos numa grande faixa de área'},
+        m6 : {'de':8,   'ate':Infinity, 'descricao': '8,0 ou mais',     'efeitos': 'Enorme terremoto, pode causar grandes danos em muitas áreas mesmo que estejam a centenas de quilômetros'}
     };
 
-	function init(){
+    function init(){
         $('#analisar').click( () => {
-        	let magnitude = amplitude = intervalo = '';
+            let magnitude = amplitude = intervalo = '';
             
-            amplitude	= $('#amplitude').val();
-            intervalo	= $('#intervalo').val();
+            amplitude   = $('#amplitude').val();
+            intervalo   = $('#intervalo').val();
             
             $('#amplitude').removeClass('is-invalid');
             $('#intervalo').removeClass('is-invalid');
@@ -42,8 +42,9 @@ var Richter = (function($){
             magnitude = calculoMagnitude(amplitude,intervalo).toFixed(1);
             faixa = classificacao(magnitude);
             mountTable(faixa,magnitude);
-        });		
-	}
+            plotEscala(faixa);          
+        });     
+    }
 
     /**
      * classifica a magnitude richter de acordo com o valor do parametro magnitude
@@ -96,13 +97,46 @@ var Richter = (function($){
      * @param  string intervalo
      * @return number        
      */
-	function calculoMagnitude(amplitude,intervalo){
-		return Math.log10(amplitude) + 3 * Math.log10( 8* intervalo) - 2.92;
-	}
+    function calculoMagnitude(amplitude,intervalo){
+        return Math.log10(amplitude) + 3 * Math.log10( 8* intervalo) - 2.92;
+    }
 
-	return{
-		init:init
-	}
+    /**
+     * exibe o grafico da escala richter e a faixa calculada
+     * @param  string faixa faixa de magnitude
+     * @return void
+     */
+    function plotEscala(faixa){
+        $("#chart").css('display','block');
+        Highcharts.chart('chart', {
+            chart:{
+                type:'line'
+            },
+            title: {
+                text: 'Magnitude calculada x Escala Richter'
+            },
+            xAxis: {
+               plotBands:[{
+                color:'#FCFFC5',
+                from:magnitudeTable[faixa].de,
+                to:magnitudeTable[faixa].ate
+               }]
+            },
+            yAxis: {
+                title: {
+                    text: 'Faixa de magnitude calculada'
+                }
+            },
+            series:[{
+                name: 'Escala Richter',
+                data:[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            }]
+        });    
+    }
+
+    return{
+        init:init
+    }
 })($);
 
 Richter.init();
