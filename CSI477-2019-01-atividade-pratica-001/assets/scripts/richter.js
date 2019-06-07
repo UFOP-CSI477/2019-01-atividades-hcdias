@@ -75,7 +75,7 @@ var Richter = (function($){
             let maximo = magnitudeTable[key].ate == Infinity ? '~' : magnitudeTable[key].ate;
 
             if(key == faixa){
-                html+='<tr class="table-success">\
+                html+='<tr class="table-success" id="winner">\
                 <td>'+magnitudeTable[key].descricao+'</td>\
                 <td>'+magnitudeTable[key].efeitos+'</td>';
             }else{
@@ -87,8 +87,17 @@ var Richter = (function($){
         $("#tableResult > thead > tr > #magnitude").css('display','table-cell').text(superhead);
         $("#tableResult > tbody").html(html);
         $("body,html").animate({
-            scrollTop:$("#tableResult").offset().top - $("#formEscala").offset().top + $("#formEscala").scrollTop()
-        },1500);        
+            scrollTop:$("#winner").offset().top - $("#formEscala").offset().top + $("#formEscala").scrollTop()
+        },1500,function(){
+            setTimeout(function(){
+                $("body,html").animate({
+                    scrollTop:$(".footer").offset().top - $("#formEscala").offset().top + $("#formEscala").scrollTop()
+                },1500);            
+            },1500);
+        });
+
+
+        
     }
 
     /**
