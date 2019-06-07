@@ -7,3 +7,11 @@ a disciplina CSI477. Os detalhes das aplicações estão disponíveis no pdf do 
 
 ### Acesso
 A versão online do trabalho pode ser acessada através do link: https://ufop-csi477.github.io/2019-01-atividades-hcdias/CSI477-2019-01-atividade-pratica-001/
+
+
+### Referencias
+
+Bootstrap: https://getbootstrap.com/docs/4.1
+Javascript: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+JQuery: https://jquery.com/
+HighCharts: https://api.highcharts.com/highcharts/
