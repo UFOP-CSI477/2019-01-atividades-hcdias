@@ -14,8 +14,15 @@ class CreateProceduresTable extends Migration
     public function up()
     {
         Schema::create('procedures', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('name');
+            $table->decimal('price');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
