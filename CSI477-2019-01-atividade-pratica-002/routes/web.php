@@ -21,17 +21,35 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('procedures', function () {
-		return view('procedures.index');
-	})->name('procedures');
+	Route::get('procedures', [
+		'as'=>'procedures.index',
+		'uses'=>'ProcedureController@index'
+	]);
 
-	Route::get('procedures/create', function () {
-		return view('procedures.create');
-	})->name('procedures.create');	
+	Route::get('procedures/create', [
+		'as'=>'procedures.create',
+		'uses'=>'ProcedureController@create'
+	]);
 
-	Route::get('procedures/edit', function () {
-		return view('procedures.edit');
-	})->name('procedures.edit');	
+	Route::post('procedures', [
+		'as'=>'procedures.store',
+		'uses'=>'ProcedureController@store'
+	]);
+
+	Route::get('procedures/{procedure}/edit', [
+		'as'=>'procedures.edit',
+		'uses'=>'ProcedureController@edit'
+	]);
+
+	Route::put('procedures/{procedure}',[
+		'as'=>'procedures.update',
+		'uses'=>'ProcedureController@update'
+	]);
+
+	Route::delete('procedures/{procedure}',[
+		'as'=>'procedures.destroy',
+		'uses'=>'ProcedureController@destroy'
+	]);
 
 	Route::get('tests', function () {
 		return view('tests.index');
@@ -41,9 +59,6 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('tests.create');
 	})->name('tests.create');	
 
-	Route::get('procedures/edit', function () {
-		return view('procedures.edit');
-	})->name('procedures.edit');
 });
 
 Route::group(['middleware' => 'auth'], function () {
