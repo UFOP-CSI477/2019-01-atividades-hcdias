@@ -38,6 +38,9 @@
                         {{ __('Email') }}
                       </th>
                       <th>
+                        {{ __('User type') }}
+                      </th>
+                      <th>
                         {{ __('Creation date') }}
                       </th>
                       <th class="text-right">
@@ -54,7 +57,10 @@
                             {{ $user->email }}
                           </td>
                           <td>
-                            {{ $user->created_at->format('Y-m-d') }}
+                            {{ $user->type == 1 ? 'admin' : 'operador' }}
+                          </td>                          
+                          <td>
+                            {{ $user->created_at->format('d/m/Y') }}
                           </td>
                           <td class="td-actions text-right">
                             @if ($user->id != auth()->id())
