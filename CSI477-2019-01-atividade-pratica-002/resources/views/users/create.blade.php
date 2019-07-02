@@ -41,7 +41,7 @@
                       @endif
                     </div>
                   </div>
-                </div>
+                </div> 
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __(' Password') }}</label>
                   <div class="col-sm-7">
@@ -52,7 +52,7 @@
                       @endif
                     </div>
                   </div>
-                </div>
+                </div>              
                 <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
                   <div class="col-sm-7">
@@ -61,6 +61,21 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label" for="input-type">{{ __('Type') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
+                      <select class="selectpicker" data-style="btn btn-primary" name="type" id="input-type" placeholder="{{ __('type') }}">
+                        <option value="1">Administrador</option>
+                        <option value="2">Operador</option>
+                      </select>
+                      @if ($errors->has('type'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('type') }}</span>
+                      @endif
+
+                    </div>
+                  </div>
+                </div>                 
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Add User') }}</button>
