@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{route('procedures.store')}}" autocomplete="off" class="form-horizontal">
             @csrf
             @method('post')
 
@@ -17,7 +17,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ route('procedures') }}" class="btn btn-sm btn-primary">{{ __('Back') }}</a>
+                      <a href="{{ route('procedures.index') }}" class="btn btn-sm btn-primary">{{ __('Back') }}</a>
                   </div>
                 </div>
                 <div class="row">

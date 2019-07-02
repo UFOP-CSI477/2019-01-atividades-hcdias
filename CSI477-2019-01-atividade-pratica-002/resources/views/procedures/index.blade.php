@@ -45,32 +45,34 @@
                       </th>
                     </thead>
                     <tbody>
+                      @foreach($procedures as $procedure)
                         <tr>
                           <td>
-                            a
+                            {{$procedure->name}}
                           </td>
                           <td>
-                            3.00
+                            {{$procedure->price}}
                           </td>
                           <td>
-                            25/06/2019
+                            {{$procedure->created_at->format('d/m/Y')}}
                           </td>
                           <td class="td-actions text-right">
-                              <form action="" method="post">
+                              <form action="{{route('procedures.destroy',$procedure)}}" method="post">
                                   @csrf
                                   @method('delete')
                               
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('procedures.edit')}}" data-original-title="" title="">
+                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('procedures.edit',$procedure)}}" data-original-title="" title='{{__("Edit procedure")}}'>
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this procedure?") }}') ? this.parentElement.submit() : ''">
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title='{{__("Delete procedure")}}' onclick="confirm('{{ __("Are you sure you want to delete this procedure?") }}') ? this.parentElement.submit() : ''">
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
                           </td>
                         </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>

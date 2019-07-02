@@ -42,7 +42,7 @@
         </div>
       </li>
       <li class="nav-item{{ $activePage == 'procedures' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('procedures') }}">
+        <a class="nav-link" href="{{ route('procedures.index') }}">
           <i class="material-icons">content_paste</i>
             <p>{{ __('Procedures') }}</p>
         </a>
