@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use App\Procedure;
 use App\Http\Requests\ProcedureRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProcedureController extends Controller
 {
+
+    public function __construct()
+    {
+        if(!Gate::allows('manage-procedures'))
+            abort(403,__('Unauthorized action'));
+    }
     public function index(Procedure $model)
     {
         return view('procedures.index',['procedures'=>$model->all()]);

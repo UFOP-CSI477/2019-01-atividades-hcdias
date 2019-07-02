@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        if(!Gate::allows('manage-users'))
+            abort(403,__('Unauthorized action'));
+    }
     /**
      * Display a listing of the users
      *
@@ -16,6 +23,7 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
+
         return view('users.index', ['users' => $model->paginate(15)]);
     }
 

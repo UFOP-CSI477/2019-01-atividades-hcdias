@@ -43,12 +43,14 @@
         </div>
       </li>
       @endcan
-      <li class="nav-item{{ $activePage == 'procedures' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('procedures.index') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Procedures') }}</p>
-        </a>
-      </li>
+      @can('manage-procedures')
+        <li class="nav-item{{ $activePage == 'procedures' ? ' active' : '' }}">
+          <a class="nav-link" href="{{ route('procedures.index') }}">
+            <i class="material-icons">content_paste</i>
+              <p>{{ __('Procedures') }}</p>
+          </a>
+        </li>
+      @endcan
       <li class="nav-item{{ $activePage == 'tests' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('tests') }}">
           <i class="material-icons">content_paste</i>
