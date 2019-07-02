@@ -23,11 +23,13 @@
                     </div>
                   </div>
                 @endif
+                @can('create-procedures')
                 <div class="row">
                   <div class="col-12 text-right">
                     <a href="{{ route('procedures.create') }}" class="btn btn-sm btn-primary">{{ __('Add procedure') }}</a>
                   </div>
                 </div>
+                @endcan
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
@@ -65,10 +67,12 @@
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title='{{__("Delete procedure")}}' onclick="confirm('{{ __("Are you sure you want to delete this procedure?") }}') ? this.parentElement.submit() : ''">
-                                      <i class="material-icons">close</i>
-                                      <div class="ripple-container"></div>
-                                  </button>
+                                  @can('delete-procedures')
+                                    <button type="button" class="btn btn-danger btn-link" data-original-title="" title='{{__("Delete procedure")}}' onclick="confirm('{{ __("Are you sure you want to delete this procedure?") }}') ? this.parentElement.submit() : ''">
+                                        <i class="material-icons">close</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                  @endcan
                               </form>
                           </td>
                         </tr>

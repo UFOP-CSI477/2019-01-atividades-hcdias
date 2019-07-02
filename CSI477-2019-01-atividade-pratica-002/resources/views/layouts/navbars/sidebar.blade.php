@@ -17,6 +17,7 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      @can('manage-users')
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="true">
           <i class="material-icons">perm_identity</i>
@@ -41,6 +42,7 @@
           </ul>
         </div>
       </li>
+      @endcan
       <li class="nav-item{{ $activePage == 'procedures' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('procedures.index') }}">
           <i class="material-icons">content_paste</i>
