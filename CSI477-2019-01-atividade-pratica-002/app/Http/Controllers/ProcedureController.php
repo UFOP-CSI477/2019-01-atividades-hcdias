@@ -13,8 +13,13 @@ class ProcedureController extends Controller
 
     public function __construct()
     {
-        if(!Gate::allows('manage-procedures'))
-            abort(403,__('Unauthorized action'));
+        $this->middleware(function($request,$next){
+            if(Gate::denies('manage-procedures')){
+                abort(403,__('Unauthorized action'));
+            }
+
+            return $next($request);
+        });
     }
     public function index(Procedure $model)
     {
