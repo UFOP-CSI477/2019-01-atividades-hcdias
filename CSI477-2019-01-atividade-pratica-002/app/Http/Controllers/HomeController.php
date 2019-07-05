@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Procedure;
 
 class HomeController extends Controller
 {
@@ -11,7 +12,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['welcome']);
     }
 
     /**
@@ -21,6 +22,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $procedures = Procedure::all();
+        return view('dashboard',['procedures'=>$procedures]);
     }
+
+    /**
+     * Show the application public page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function welcome()
+    {
+        $procedures = Procedure::all();
+        return view('welcome',['procedures'=>$procedures]);
+    }    
 }
