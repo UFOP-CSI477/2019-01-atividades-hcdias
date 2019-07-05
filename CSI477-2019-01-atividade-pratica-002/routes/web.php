@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome')->middleware('guest');
+Route::get('/', 'HomeController@welcome')->name('welcome')->middleware('guest');
 
 Auth::routes();
 
@@ -51,13 +49,35 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses'=>'ProcedureController@destroy'
 	]);
 
-	Route::get('tests', function () {
-		return view('tests.index');
-	})->name('tests');
+	Route::get('tests', [
+		'as'=>'tests.index',
+		'uses'=>'TestController@index'
+	]);
 
-	Route::get('tests/create', function () {
-		return view('tests.create');
-	})->name('tests.create');	
+	Route::get('tests/create', [
+		'as'=>'tests.create',
+		'uses'=>'TestController@create'
+	]);
+
+	Route::post('tests', [
+		'as'=>'tests.store',
+		'uses'=>'TestController@store'
+	]);
+
+	Route::get('tests/{test}/edit', [
+		'as'=>'tests.edit',
+		'uses'=>'TestController@edit'
+	]);
+
+	Route::put('tests/{test}',[
+		'as'=>'tests.update',
+		'uses'=>'TestController@update'
+	]);
+
+	Route::delete('tests/{test}',[
+		'as'=>'tests.destroy',
+		'uses'=>'TestController@destroy'
+	]);
 
 });
 
