@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Support\Facades\Gate;
 class ProcedureRequest extends FormRequest
 {
     /**
@@ -24,8 +24,8 @@ class ProcedureRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|max:255',
-            'price'=>'required'
+            'name'=> Gate::allows('update-full-procedure') ? 'required|max:255' : 'nullable',
+            'price'=>'required|numeric'
         ];
     }
 }
