@@ -51,7 +51,15 @@ class ProcedureController extends Controller
 
     public function destroy(Procedure $procedure)
     {
-        $procedure->delete();
+        try{
+            $procedure->delete();
+        }catch(\Illuminate\Database\QueryException $e){
+            if($e->getCode() == 23000){
+                return redirect()->route('procedures.index')->withStatusError(__('This procedure has active tests. Delete the tests first in order to delete the procedure.'));
+            }
+
+            throw $e;
+        }
         return redirect()->route('procedures.index')->withStatus(__('Procedure successfully deleted.'));
     }
 }
