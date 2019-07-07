@@ -25,8 +25,8 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="#" class="btn btn-sm btn-info">{{ __("Total cost: R$ ")}} {{ $totalPrice  }}</a>
-                    <a href="#" class="btn btn-sm btn-info">{{ __("Total tests: ")  }}{{ $totalTests}}</a>
+                    <a href="#" class="btn btn-sm btn-info">{{ __("Total Cost: US")}} {{ $totalPrice  }}</a>
+                    <a href="#" class="btn btn-sm btn-info">{{ __("Total Tests:")  }}{{ $totalTests}}</a>
                   </div>
                 </div>
                 <div class="table-responsive">

@@ -80,5 +80,7 @@
     "The current password field does not match your password":"A senha digitada não corresponde a sua senha.",
     "The price must be a number.":"O preço precisa ser um número.",
     "Procedure name":"Nome do procedimento",
-    "Procedure price":"Preço do procedimento"
+    "Procedure price":"Preço do procedimento",
+    "Total Cost: US":"Custo total R$:",
+    "Total Tests:":"Total de exames:"
 }
