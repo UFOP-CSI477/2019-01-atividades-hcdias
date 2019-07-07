@@ -13,7 +13,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware(function($request,$next){
-            if(Gate::denies('manage-procedures')){
+            if(Gate::denies('manage-users')){
                 abort(403,__('Unauthorized action'));
             }
 
@@ -29,7 +29,7 @@ class UserController extends Controller
     public function index(User $model)
     {
 
-        return view('users.index', ['users' => $model->paginate(15)]);
+        return view('users.index', ['users' => $model->paginate(10)]);
     }
 
     /**
