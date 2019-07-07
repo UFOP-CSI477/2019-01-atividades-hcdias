@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Test;
+use App\Procedure;
 use App\Http\Requests\TestRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -25,7 +26,15 @@ class TestController extends Controller
     public function index(Test $model)
     {
         if(Gate::allows('manage-my-tests')){
-            return view('tests.index',['tests'=>$model->where('user_id',Auth::user()->id)->get()]);    
+            $procedures = Procedure::whereHas('tests',function($query){
+                $query->where('user_id',Auth::user()->id);
+            })
+            ->orderby('name','asc')
+            ->get();
+
+            return view('tests.index',[
+                'procedures'=>$procedures
+            ]);    
         }
 
         return view('tests.index',['tests'=>$model->all()]);   
