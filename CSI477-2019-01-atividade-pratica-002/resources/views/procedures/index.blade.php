@@ -91,6 +91,7 @@
                         @endforeach
                     </tbody>
                   </table>
+                  {{$procedures->links()}}
                 </div>
               </div>
             </div>
