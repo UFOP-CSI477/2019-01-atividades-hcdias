@@ -23,7 +23,7 @@ class ProcedureController extends Controller
     }
     public function index(Procedure $model)
     {
-        return view('procedures.index',['procedures'=>$model->all()]);
+        return view('procedures.index',['procedures'=>$model->paginate(10)]);
     }
 
     public function create()
