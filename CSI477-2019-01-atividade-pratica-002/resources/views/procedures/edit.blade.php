@@ -31,7 +31,7 @@
                       @endcan
 
                       @if ($errors->has('name'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                        <span id="name-error" class="error text-danger" for="input-name">{{__( $errors->first('name')) }}</span>
                       @endif
                     </div>
                   </div>
@@ -42,7 +42,7 @@
                     <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
                       <input class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="input-price" type="price" placeholder="{{ __('price') }}" value="{{ old('price',$procedure->price) }}" required />
                       @if ($errors->has('price'))
-                        <span id="price-error" class="error text-danger" for="input-price">{{ $errors->first('price') }}</span>
+                        <span id="price-error" class="error text-danger" for="input-price">{{ __($errors->first('price')) }}</span>
                       @endif
                     </div>
                   </div>
