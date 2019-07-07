@@ -12,13 +12,14 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav" >
+        @can('manage-my-tests')
         <li class="nav-item dropdown" >
           <a class="nav-link" href="#" id="navbarDropdownMenuLink" aria-expanded="false">
             <i class="material-icons">shopping_cart</i>
             <span class="notification" id="notification-count">0</span>
           </a>
-          
         </li>
+        @endcan
         <li class="nav-item dropdown">
           <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">person</i>
