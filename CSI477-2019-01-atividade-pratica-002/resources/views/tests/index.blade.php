@@ -25,52 +25,72 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('procedures.create') }}" class="btn btn-sm btn-primary">{{ __('Add procedure') }}</a>
+                    <a href="#" class="btn btn-sm btn-primary">{{ __('Add test') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                          {{ __('Name') }}
+                          {{ __('Pacient') }}
+                      </th>
+                      <th>
+                          {{ __('Procedure') }}
                       </th>
                       <th>
                         {{ __('Price') }}
                       </th>
                       <th>
-                        {{ __('Creation date') }}
+                        {{ __('Test date') }}
                       </th>
+                      <th>
+                        {{ __('Creation date') }}
+                      </th>                      
                       <th class="text-right">
                         {{ __('Actions') }}
                       </th>
                     </thead>
                     <tbody>
+                      @foreach($tests as $test)
                         <tr>
                           <td>
-                            a
+                            {{ $test->users->name }}
                           </td>
                           <td>
-                            3.00
+                            {{ $test->procedures->name }}
                           </td>
                           <td>
-                            25/06/2019
+                            {{ $test->procedures->price }}
+                          </td>
+                          <td>
+                            {{ date('d/m/Y H:i',strtotime($test->date)) }}
+                          </td>
+                          <td>
+                            {{ date('d/m/Y H:i',strtotime($test->created_at)) }}
                           </td>
                           <td class="td-actions text-right">
-                              <form action="" method="post">
+                              <form action="{{ route('tests.destroy', $test) }}" method="post">
                                   @csrf
                                   @method('delete')
-                              
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('procedures.edit')}}" data-original-title="" title="">
-                                    <i class="material-icons">edit</i>
-                                    <div class="ripple-container"></div>
-                                  </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this procedure?") }}') ? this.parentElement.submit() : ''">
+                                  @if( $test->date > date("Y-m-d H:i:s"))
+                                    <a rel="tooltip" class="btn btn-success btn-link" href="{{route('tests.edit', $test)}}" data-original-title="{{ __('Edit')}}" title="{{ __('Edit')}}">
+                                      <i class="material-icons">edit</i>  
+                                      <div class="ripple-container"></div>
+                                    </a>
+                                  @else
+                                    <a rel="tooltip" class="btn btn-warning btn-link" href="#" data-original-title="{{__('You cannot edit past exams')}}" title="{{__('You cannot edit past exams')}}">
+                                      <i class="material-icons">warning</i>  
+                                      <div class="ripple-container"></div>
+                                    </a>
+                                  @endif
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this test?") }}') ? this.parentElement.submit() : ''">
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
                           </td>
                         </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -79,5 +99,6 @@
         </div>
       </div>
     </div>
+    @include('cart')
   </div>
 @endsection
