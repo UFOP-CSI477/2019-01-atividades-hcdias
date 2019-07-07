@@ -23,6 +23,18 @@
                     </div>
                   </div>
                 @endif
+                @if (session('status_error'))
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <span>{{ session('status_error') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                @endif                
                 <div class="row">
                   <div class="col-12 text-right">
                     <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add User') }}</a>

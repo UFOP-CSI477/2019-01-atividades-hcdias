@@ -93,7 +93,15 @@ class UserController extends Controller
      */
     public function destroy(User  $user)
     {
-        $user->delete();
+        try{
+            $user->delete();
+        }catch(\Illuminate\Database\QueryException $e){
+            if($e->getCode() == 23000){
+                return redirect()->route('user.index')->withStatusError(__('This user has active tests. Delete the tests first in order to delete the user.'));
+            }
+
+            throw $e;
+        }
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
     }
