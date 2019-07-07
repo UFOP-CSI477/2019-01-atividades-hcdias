@@ -25,7 +25,8 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="#" class="btn btn-sm btn-primary">{{ __('Add Test') }}</a>
+                    <a href="#" class="btn btn-sm btn-info">{{ __("Total cost: R$ ")}} {{ $totalPrice  }}</a>
+                    <a href="#" class="btn btn-sm btn-info">{{ __("Total tests: ")  }}{{ $totalTests}}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -52,9 +53,6 @@
                     </thead>
                     <tbody>
                       @foreach($procedures as $procedure)
-                        @php
-                          $procedure->tests->sortByDesc('date')
-                        @endphp
                         @foreach($procedure->tests as $test)
                           <tr>
                             <td>
