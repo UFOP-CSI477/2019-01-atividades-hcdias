@@ -54,7 +54,7 @@
       @can('manage-tests')
       <li class="nav-item{{ $activePage == 'tests' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('tests.index') }}">
-          <i class="material-icons">content_paste</i>
+          <i class="material-icons">assignment_turned_in</i>
             <p>{{ __('Tests') }}</p>
         </a>
       </li>
