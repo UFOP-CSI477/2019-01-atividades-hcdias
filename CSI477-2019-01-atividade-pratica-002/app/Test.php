@@ -12,11 +12,11 @@ class Test extends Model
 
     public function procedures()
     {
-        return $this->belongsTo('App\Procedure');
+        return $this->belongsTo('App\Procedure','procedure_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','user_id');
     }
 }
