@@ -57,7 +57,7 @@
                             {{ $user->email }}
                           </td>
                           <td>
-                            {{ $user->type == 1 ? 'admin' : 'operador' }}
+                            {{ $user->type == 1 ? 'admin' : ($user->type == 2 ? 'operador' : 'paciente') }}
                           </td>                          
                           <td>
                             {{ $user->created_at->format('d/m/Y') }}
