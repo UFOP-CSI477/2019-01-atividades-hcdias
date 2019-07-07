@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="{{ asset('material') }}/css/bootstrap-datetimepicker.css?v=2.1.1" rel="stylesheet" />
     <link href="{{ asset('material') }}/css/bootstrap-select.min.css" rel="stylesheet">
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <!-- <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" /> -->
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -36,6 +35,7 @@
         <script src="{{ asset('material') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
         <!-- Plugin for the momentJs  -->
         <script src="{{ asset('material') }}/js/plugins/moment.min.js"></script>
+        <script src="{{ asset('material') }}/js/plugins/moment.pt-br.js"></script>
         <!--  Plugin for Sweet Alert -->
         <script src="{{ asset('material') }}/js/plugins/sweetalert2.js"></script>
         <!-- Forms Validations Plugin -->
