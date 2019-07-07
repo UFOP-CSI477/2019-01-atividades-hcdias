@@ -37,7 +37,9 @@ class TestController extends Controller
             ]);    
         }
 
-        return view('tests.index',['tests'=>$model->all()]);   
+        $procedures = Procedure::all();
+        $procedures->sortBy('name');
+        return view('tests.index',['procedures'=>$procedures]);   
         
     }
 
