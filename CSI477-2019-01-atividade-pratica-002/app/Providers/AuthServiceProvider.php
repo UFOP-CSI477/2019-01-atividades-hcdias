@@ -43,7 +43,14 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('update-full-procedure',function($user){
              return $user->type == 1;
-        });    
+        });
 
+        Gate::define('manage-tests',function($user){
+            return ($user->type == 1 || $user->type == 3);
+        });
+
+        Gate::define('manage-my-tests',function($user){
+            return $user->type == 3;
+        });
     }
 }
