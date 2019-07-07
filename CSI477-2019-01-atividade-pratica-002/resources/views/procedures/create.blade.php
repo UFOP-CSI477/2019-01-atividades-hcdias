@@ -35,7 +35,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Price') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="input-price" type="price" placeholder="{{ __('price') }}" value="{{ old('price') }}" required />
+                      <input class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="input-price" type="price" placeholder="{{ __('Price') }}" value="{{ old('price') }}" required />
                       @if ($errors->has('price'))
                         <span id="price-error" class="error text-danger" for="input-price">{{ $errors->first('price') }}</span>
                       @endif

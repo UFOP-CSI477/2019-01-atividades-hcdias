@@ -25,7 +25,7 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="#" class="btn btn-sm btn-primary">{{ __('Add test') }}</a>
+                    <a href="#" class="btn btn-sm btn-primary">{{ __('Add Test') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -78,7 +78,7 @@
                                       <div class="ripple-container"></div>
                                     </a>
                                   @else
-                                    <a rel="tooltip" class="btn btn-warning btn-link" href="#" data-original-title="{{__('You cannot edit past exams')}}" title="{{__('You cannot edit past exams')}}">
+                                    <a rel="tooltip" class="btn btn-warning btn-link" href="#" data-original-title="{{__('You cannot edit past tests')}}" title="{{__('You cannot edit past tests')}}">
                                       <i class="material-icons">warning</i>  
                                       <div class="ripple-container"></div>
                                     </a>
