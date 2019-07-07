@@ -1,47 +1,50 @@
-@extends('layouts.app', ['activePage' => 'procedures', 'titlePage' => __('Manage Procedures')])
+@extends('layouts.app', ['activePage' => 'tests', 'titlePage' => __('Manage Tests')])
 
 @section('content')
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('tests.update',$test) }}" autocomplete="off" class="form-horizontal">
             @csrf
-            @method('post')
+            @method('put')
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Edit Procedure') }}</h4>
+                <h4 class="card-title">{{ __('Edit Test') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ route('procedures') }}" class="btn btn-sm btn-primary">{{ __('Back') }}</a>
+                      <a href="{{ route('tests.index') }}" class="btn btn-sm btn-primary">{{ __('Back') }}</a>
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required="true" aria-required="true"/>
-                      @if ($errors->has('name'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                  <div class="col-sm-6">
+                    <label class="col-sm-6 col-form-label">{{ __('Test date') }}</label>
+                    <div class="form-group{{ $errors->has('date') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }} datetimepicker" name="date" type="text" placeholder="{{ __('Date') }}" value="{{ date('d/m/Y H:i',strtotime($test->date)) }}" required />
+                      @if ($errors->has('date'))
+                        <span id="date-error" class="error text-danger" for="input-date">{{ $errors->first('date') }}</span>
                       @endif
                     </div>
                   </div>
-                </div>
+                </div>  
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Price') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="input-price" type="price" placeholder="{{ __('price') }}" value="{{ old('price') }}" required />
-                      @if ($errors->has('price'))
-                        <span id="price-error" class="error text-danger" for="input-price">{{ $errors->first('price') }}</span>
-                      @endif
+                  <div class="col-sm-6">
+                    <label class="col-sm-6 col-form-label">{{ __('Procedure name') }}</label>
+                    <div class="form-group">
+                      <input class="form-control" type="text" value="{{ $test->procedures->name }}" disabled="true" />
                     </div>
                   </div>
-                </div>            
+                  <div class="col-sm-6">
+                    <label class="col-sm-6 col-form-label">{{ __('Procedure price') }}</label>
+                    <div class="form-group">
+                      <input class="form-control" type="text" value="{{ $test->procedures->price }}" disabled="true" />
+                    </div>
+                  </div>
+                </div>          
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
@@ -53,3 +56,24 @@
     </div>
   </div>
 @endsection
+@push('js')
+  <script>
+    $(document).ready(function() {
+      //inicia o datetimepicker
+      $('.datetimepicker').datetimepicker({
+          icons: {
+              time: "fa fa-clock-o",
+              date: "fa fa-calendar",
+              up: "fa fa-chevron-up",
+              down: "fa fa-chevron-down",
+              previous: 'fa fa-chevron-left',
+              next: 'fa fa-chevron-right',
+              today: 'fa fa-screenshot',
+              clear: 'fa fa-trash',
+              close: 'fa fa-remove'
+          }
+      }); 
+
+    });
+  </script>
+@endpush
