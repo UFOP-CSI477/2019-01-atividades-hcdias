@@ -31,16 +31,31 @@ class TestController extends Controller
             })
             ->orderby('name','asc')
             ->get();
-
-            return view('tests.index',[
-                'procedures'=>$procedures
-            ]);    
+            //filtra os testes do usuario. Deveria ser join, mas sem tempo irmão
+            foreach($procedures as &$procedure){
+                $procedure->tests = $procedure->tests->filter(function($test){
+                    return $test->user_id == Auth::user()->id;
+                });
+            }
+        }else{
+            $procedures = Procedure::all();
+            $procedures->sortBy('name');
         }
 
-        $procedures = Procedure::all();
-        $procedures->sortBy('name');
-        return view('tests.index',['procedures'=>$procedures]);   
-        
+        $totalTests = 0;
+        $totalPrice = 0;
+        foreach($procedures as &$procedure){
+            $procedure->tests = $procedure->tests->sortByDesc('date');
+            $count = $procedure->tests->count();
+            $totalTests += $count;
+            $totalPrice += $procedure->price * $count;
+        }
+
+        return view('tests.index',[
+            'procedures'=>$procedures,
+            'totalTests'=>$totalTests,
+            'totalPrice'=>number_format($totalPrice,2,',','.')
+        ]);    
     }
 
     public function create()
