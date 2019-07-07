@@ -61,6 +61,22 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label" for="input-type">{{ __('Type') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
+                      <select class="selectpicker" data-style="btn btn-primary" name="type" id="input-type" placeholder="{{ __('type') }}">
+                        <option value="1" {{ $user->type == 1 ? "selected" : "" }}>Administrador</option>
+                        <option value="2" {{ $user->type == 2 ? "selected" : "" }}>Operador</option>
+                        <option value="3" {{ $user->type == 3 ? "selected" : "" }}>Paciente</option>
+                      </select>
+                      @if ($errors->has('type'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('type') }}</span>
+                      @endif
+
+                    </div>
+                  </div>
+                </div> 
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
